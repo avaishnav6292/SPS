@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/style.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>SmartParkingSystem - DataDive</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center" style="background-color:darkslateblue; color: lightskyblue;">
+            <h1>SMART PARKING SYSTEM</h1>
+        </div>
+        <div class="row justify-content-center" style="background-color: cornflowerblue;">
+            <h2>DataDive</h2>
+        </div>
+
+        <div class="row">
+
+            <!--ENTRANCE-->
+            <div class="col" style="background-color:darksalmon;">
+                <div class="row justify-content-center" >
+                    <h3 style="background-color: lightsteelblue; border: solid 2px black;">Entrance</h3>
+                </div>
+
+                <form class="md-form" action="/detect" method="POST">
+                    <i class="fas fa-paperclip" aria-hidden="true"></i>
+                    <input type="file" name="filename">
+                    <br>OR<br>
+                    <label for="file">Enter filename</label>
+                    <input type="text" name="file" id="">
+                    <br>
+                    <input type="submit" name="" id="" value="Detect"> 
+                </form>
+               <div class="row justify-content-center" style="border: 2px solid black; background-color: darkgrey; margin-top: 25px;">Gate : open</div>
+            </div>
+
+            <!--EXIT-->
+            <div class="col" style="background-color:aquamarine;">
+                <div class="row justify-content-center">
+                    <h3 style="background-color: lightsteelblue; border: solid 2px black;">Exit</h3>
+                </div>
+                <form class="md-form" action="/update" method="POST">
+                    <i class="fas fa-paperclip" aria-hidden="true"></i>
+                    <input type="file" name="filename">
+                    <br>OR<br>
+                    <label for="file">Enter filename</label>
+                    <input type="text" name="file" id="">
+                    <br>
+                    <input type="submit" name="" id="" value="Detect"> 
+                </form>
+               <div class="row justify-content-center" style="border: 2px solid black; background-color: darkgrey; margin-top: 25px;">Gate : open</div>
+            </div>
+
+        </div>
+        <div class="row data" style="margin-top: 50px;">
+                <table class="data" border="5px">
+                    <tr>
+                        <th class="ths">S. No.</th>
+                        <th>Vehicle Number</th>
+                        <th>Entry Time</th>
+                        <th>Exit Time</th>
+                        <th>Duration</th>
+                        <th>Charges</th>
+                    </tr>
+                    {% for vehicle in vehicles %}
+                    <tr>
+                        <td> {{ vehicle.id }} </td>
+                        <td> {{ vehicle.number }} </td>
+                        <td> {{ vehicle.entry_time }} </td>
+                        <td> {{ vehicle.exit_time }} </td>
+                        <td> {{ vehicle.duration }} </td>
+                        <td> {{ vehicle.charges }} </td>
+                    </tr>
+                    {% endfor %}
+                   
+                    
+                </table>
+        </div>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,12 @@
+div.data {
+    height: 250px;
+    overflow: scroll;
+}
+
+
+/* .data {
+    background-color: burlywood;
+} */
+th {
+    width: 200px;
+}
